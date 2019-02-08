@@ -27,8 +27,14 @@ public class QueenBoard{
           str += '_';
         }
       }
-      str += "/n";
+      str += "\n";
     }
     return str;
   }
+
+  public static void main(String[] args) {
+    QueenBoard k = new QueenBoard(8);
+    System.out.println(k);
+  }
+
 }
