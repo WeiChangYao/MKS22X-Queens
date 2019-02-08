@@ -17,7 +17,7 @@ public class QueenBoard{
       board[r][c+i]++;
     }
     for(int i = 1; i+r < board.length-1; i--){
-      board[r-i][c]++; 
+      board[r-i][c]++;
     }
     for(int i = 1; i+c > board[r].length-1; i--){
       board[r][c-i]++;
@@ -34,6 +34,9 @@ public class QueenBoard{
       for (int j = 0; j < board[i].length; j++){
         if(board[i][j] == -1){
           str += 'Q';
+        }
+        if(board[i][j] > 0){
+          str += 'x';
         }
         else{
           str += '_';
