@@ -35,6 +35,10 @@ public class QueenBoard{
   public static void main(String[] args) {
     QueenBoard k = new QueenBoard(8);
     System.out.println(k);
+    System.out.println();
+    k.addQueen(0,0);
+    k.addQueen(1,1);
+    System.out.println(k);
   }
 
 }
