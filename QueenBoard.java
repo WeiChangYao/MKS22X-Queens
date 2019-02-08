@@ -18,8 +18,8 @@ public class QueenBoard{
   }
   public String toString(){
     String str = "";
-    for (int i = 0; i < size; i++){
-      for (int j = 0; j < size; j++){
+    for (int i = 0; i < board.length; i++){
+      for (int j = 0; j < board[i].length; j++){
         if(board[i][j] == -1){
           str += 'Q';
         }
@@ -27,7 +27,8 @@ public class QueenBoard{
           str += '_';
         }
       }
-      str += '/n'
+      str += "/n";
     }
+    return str;
   }
 }
