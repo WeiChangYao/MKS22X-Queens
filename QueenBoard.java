@@ -12,10 +12,26 @@ public class QueenBoard{
     board[r][c] = -1;
     return true;
   }
-  private boolean removeQueen(int r, int c){
+  private boolean removeQueen( int r, int c){
     board[r][c] = 0;
     return true;
   }
+  private boolean placable( int r, int c) { 
+    int i, j; 
+    for (i = 0; i < c; i++){
+      if (board[r][i] == -1)
+         return false; 
+    }
+    for (i = r, j = r; (i >= 0 && j >= 0); i--, j--){
+      if (board[i][j] == -1) 
+         return false; 
+    }
+    for (i=r, j=c; (j >= 0 && i >= 0); i++, j--){
+      if (board[i][j] == -1) 
+         return false; 
+    }
+    return true; 
+  } 
   public String toString(){
     String str = "";
     for (int i = 0; i < board.length; i++){
@@ -38,8 +54,9 @@ public class QueenBoard{
     System.out.println();
     k.addQueen(1,1);
     System.out.println(k);
-    k.removeQueen(1,1);
-    System.out.println(k);
+    if(placable( 1,-1) == false){
+      System.out.println("hi");
+    }
   }
 
 }
