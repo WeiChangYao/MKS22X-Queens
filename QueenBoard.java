@@ -10,7 +10,7 @@ public class QueenBoard{
       }
     }
   }
-  private int getSize(QueenBoard a){
+  private int getSize(){
     return size;
   }
   private boolean addQueen(int r, int c){
@@ -38,6 +38,14 @@ public class QueenBoard{
       if (board[i][j] == -1) 
          return false; 
     }
+    for (i = r, j = r; (i >= 0 && j >= 0); i--, j++){
+      if (board[i][j] == -1) 
+         return false; 
+    }
+    for (i=r, j=c; (j >= 0 && i >= 0); i++, j++){
+      if (board[i][j] == -1) 
+         return false; 
+    }
     return true; 
   } 
   public String toString(){
@@ -57,30 +65,34 @@ public class QueenBoard{
   }
   
   public static boolean solveR(QueenBoard bord, int col){
-    if (col >= bord.getSize(bord)){
+    if (col >= bord.getSize()){
       return true;
     }
-    for (int i = 0; i < bord.getSize(bord); i++){
+    for (int i = 0; i < bord.getSize(); i++){
         if (bord.addQueen(i,col)){
-        if (solveR(bord, col+1)){
-          return true;
+          bord.addQueen(i,col);
+          if (solveR(bord, col+1)){
+            return true;
+          }
         }
         else{
           bord.removeQueen(i,col);
-        }
+        } 
       }
+      return false;
     }
-    return false;
-  }
+  
+ /* public boolean solve(){
+    return solveR(board, 0);
+  } */
   
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(4);
+    QueenBoard k = new QueenBoard(2);
     System.out.println(k);
     System.out.println();
-    k.addQueen(1,1);
-    System.out.println(k);
-    if(k.placable( 1,-1) == false){
-      System.out.println("hi");
+    if (solveR(k,0) == true){
+      solveR(k,0);
+      System.out.println(k);
     }
   }
 
