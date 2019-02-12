@@ -1,12 +1,17 @@
 public class QueenBoard{
   private int[][]board;
+  private int size;
   public QueenBoard(int size){
+    size = size;
     board = new int[size][size];
     for (int i = 0; i < size; i++){
       for (int j = 0; j < size; j++){
         board[i][j] = 0;
       }
     }
+  }
+  private int getSize(QueenBoard a){
+    return size;
   }
   private boolean addQueen(int r, int c){
     if(placable(r,c) == true){
@@ -51,21 +56,21 @@ public class QueenBoard{
     return str;
   }
   
-  public static boolean solveR(int col)
-    if col >= size{
-      return true
+  public static boolean solveR(QueenBoard bord, int col){
+    if (col >= board.length){
+      return true;
     }
-    for (int i = 0; i < size; i++){
-      if (addQueen){
-        if solveR(col+1){
+    for (int i = 0; i < board.length; i++){
+        if (bord.addQueen(i,col)){
+        if (solveR(bord, col+1)){
           return true;
         }
         else{
-          removeQueen;
+          bord.removeQueen(i,col);
         }
       }
     }
-    return false
+    return false;
   }
   
   public static void main(String[] args) {
