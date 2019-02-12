@@ -57,10 +57,10 @@ public class QueenBoard{
   }
   
   public static boolean solveR(QueenBoard bord, int col){
-    if (col >= board.length){
+    if (col >= bord.getSize(bord)){
       return true;
     }
-    for (int i = 0; i < board.length; i++){
+    for (int i = 0; i < bord.getSize(bord); i++){
         if (bord.addQueen(i,col)){
         if (solveR(bord, col+1)){
           return true;
