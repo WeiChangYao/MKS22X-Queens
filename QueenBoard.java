@@ -9,8 +9,11 @@ public class QueenBoard{
     }
   }
   private boolean addQueen(int r, int c){
-    board[r][c] = -1;
-    return true;
+    if(placable == true){
+      board[r][c] = -1;
+      return true;
+    }
+    return false;
   }
   private boolean removeQueen( int r, int c){
     board[r][c] = 0;
@@ -54,7 +57,7 @@ public class QueenBoard{
     System.out.println();
     k.addQueen(1,1);
     System.out.println(k);
-    if(placable( 1,-1) == false){
+    if(k.placable( 1,-1) == false){
       System.out.println("hi");
     }
   }
