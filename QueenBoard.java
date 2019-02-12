@@ -9,7 +9,7 @@ public class QueenBoard{
     }
   }
   private boolean addQueen(int r, int c){
-    if(placable == true){
+    if(placable(r,c) == true){
       board[r][c] = -1;
       return true;
     }
@@ -50,7 +50,24 @@ public class QueenBoard{
     }
     return str;
   }
-
+  
+  public static boolean solveR(int col)
+    if col >= size{
+      return true
+    }
+    for (int i = 0; i < size; i++){
+      if (addQueen){
+        if solveR(col+1){
+          return true;
+        }
+        else{
+          removeQueen;
+        }
+      }
+    }
+    return false
+  }
+  
   public static void main(String[] args) {
     QueenBoard k = new QueenBoard(4);
     System.out.println(k);
