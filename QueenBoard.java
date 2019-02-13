@@ -19,35 +19,30 @@ public class QueenBoard{
       return true;
     }
     return false;
-  }
+  } 
   private boolean removeQueen( int r, int c){
     board[r][c] = 0;
     return true;
   }
-  private boolean placable( int r, int c) { 
-    int i, j; 
-    for (i = 0; i < c; i++){
-      if (board[r][i] == -1)
-         return false; 
-    }
-    for (i = r, j = r; (i >= 0 && j >= 0); i--, j--){
-      if (board[i][j] == -1) 
-         return false; 
-    }
-    for (i=r, j=c; (j >= 0 && i >= 0); i++, j--){
-      if (board[i][j] == -1) 
-         return false; 
-    }
-    for (i = r, j = r; (i >= 0 && j >= 0); i--, j++){
-      if (board[i][j] == -1) 
-         return false; 
-    }
-    for (i=r, j=c; (j >= 0 && i >= 0); i++, j++){
-      if (board[i][j] == -1) 
-         return false; 
-    }
+  
+  /*private boolean placable( int r, int c) { 
+    for (int i = r-1; i >= 0; i--) {
+      if(board[i][c] == -1){
+        return false;
+      }
+    }
+    for (int i = r-1, j = c-1; i >= 0 && j >= 0; i--, j--) {
+      if(board[i][j] == -1){
+        return false;
+      }
+    }
+    for (int i = r-1, j = c+1; i >= 0 && j < board.length; i--, j++) {
+      if(board[i][j] == 1){
+        return false;
+      }
+    }
     return true; 
-  } 
+  } */
   public String toString(){
     String str = "";
     for (int i = 0; i < board.length; i++){
@@ -86,7 +81,7 @@ public class QueenBoard{
     return solveR(board, 0);
   } */
   
-  public static void main(String[] args) {
+ /* public static void main(String[] args) {
     QueenBoard k = new QueenBoard(2);
     System.out.println(k);
     System.out.println();
@@ -94,6 +89,6 @@ public class QueenBoard{
       solveR(k,0);
       System.out.println(k);
     }
-  }
+  } */
 
 }
