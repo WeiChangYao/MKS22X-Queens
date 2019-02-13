@@ -19,30 +19,32 @@ public class QueenBoard{
       return true;
     }
     return false;
-  } 
+  }
   private boolean removeQueen( int r, int c){
     board[r][c] = 0;
     return true;
   }
-  
-  /*private boolean placable( int r, int c) { 
-    for (int i = r-1; i >= 0; i--) {
-      if(board[i][c] == -1){
-        return false;
-      }
-    }
-    for (int i = r-1, j = c-1; i >= 0 && j >= 0; i--, j--) {
-      if(board[i][j] == -1){
-        return false;
-      }
-    }
-    for (int i = r-1, j = c+1; i >= 0 && j < board.length; i--, j++) {
-      if(board[i][j] == 1){
-        return false;
-      }
-    }
-    return true; 
-  } */
+
+  private boolean placable( int r, int c) {
+    int i, j;
+    //checks left of target for -1
+    for (i = 0; i < c; i++){
+      if (board[r][i] == -1)
+         return false;
+    }
+    //checks top left diag for -1
+    for (i = r, j = c; (i >= 0 && j >= 0); i--, j--){
+      if (board[i][j] == -1)
+         return false;
+    }
+    //cheskcs bottom left diag for -1
+    for (i = r, j = c; (j >= 0 && i >= 0); i++, j--){
+      if (board[i][j] == -1)
+         return false;
+       }
+    return true;
+}
+
   public String toString(){
     String str = "";
     for (int i = 0; i < board.length; i++){
@@ -58,7 +60,7 @@ public class QueenBoard{
     }
     return str;
   }
-  
+
   public static boolean solveR(QueenBoard bord, int col){
     if (col >= bord.getSize()){
       return true;
@@ -72,23 +74,29 @@ public class QueenBoard{
         }
         else{
           bord.removeQueen(i,col);
-        } 
+        }
       }
       return false;
     }
-  
+
  /* public boolean solve(){
     return solveR(board, 0);
   } */
-  
- /* public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(2);
+
+  public static void main(String[] args) {
+    QueenBoard k = new QueenBoard(4);
+    System.out.println(k);
+    k.addQueen(2,1);
+    System.out.println(k);
+    k.addQueen(1,2);
+    k.addQueen(2,2);
+    k.addQueen(3,2);
     System.out.println(k);
     System.out.println();
-    if (solveR(k,0) == true){
+    /*if (solveR(k,0) == true){
       solveR(k,0);
       System.out.println(k);
-    }
-  } */
+    }*/
+  }
 
 }
