@@ -10,9 +10,7 @@ public class QueenBoard{
       }
     }
   }
-  private int getSize(){
-    return size;
-  }
+
   private boolean addQueen(int r, int c){
     if(placable(r,c) == true){
       board[r][c] = -1;
@@ -32,7 +30,7 @@ public class QueenBoard{
       if (board[r][i] == -1)
          return false;
     }
-    //checks row of target
+    //checks row of target for -1
     for (i = 0; i < board.length; i++){
       if (board[i][c] == -1)
          return false;
@@ -67,15 +65,15 @@ public class QueenBoard{
   }
 
   public boolean solveR(int col){
-    if (col >= board.length){
+    if (col >= board.length){  //when it's past last col, return true
       return true;
     }
-    for (int i = 0; i < board.length; i++){
+    for (int i = 0; i < board.length; i++){ 
         if (this.addQueen(i,col)){
-          if (solveR(col+1)){
+          if (solveR(col+1)){ //goes through all columns and rows
             return true;
          }
-          this.removeQueen(i,col);
+          this.removeQueen(i,col); //back tracks itf it's false
         } 
       }
       return false;
@@ -85,7 +83,7 @@ public class QueenBoard{
     if (board[0][0] != 0){
       throw new IllegalStateException();
     }
-    if (board.length == 2 || board.length == 3){
+    if (board.length == 2 || board.length == 3){ //2 or 3 sized boards are false
       return false;
     }
     return solveR(0);
@@ -93,30 +91,31 @@ public class QueenBoard{
  
   public void clear(){
     for (int i = 0; i < board.length; i++){
-      for (int j = 0; j < board.length; j++){
+      for (int j = 0; j < board.length; j++){ //loop through and set 0
         board[i][j] = 0;
       }
     }
   }
   
-  public int countHelp(int col, int count){
-    if (col >= board.length){
-      count++;
-    }
+  public int countHelp(int col, int c){
     for (int i = 0; i < board.length; i++){
         if (this.addQueen(i,col)){
-          countHelp(col+1, count);
+          if (solveR(col+1)){    //loops though combinations and if it's true, add to count
+            c++;
+            clear();
+         }
           this.removeQueen(i,col);
-        }
+        } 
       }
-      return count;
+      return c;
   }
+
   
   public int countSolutions(){
     if (board[0][0] != 0){
       throw new IllegalStateException();
     }
-    if (board.length == 2 || board.length == 3){
+    if (board.length == 2 || board.length == 3){ //2 and 3 sized boards are 0
       return 0;
     }
     //real stuff
@@ -124,9 +123,9 @@ public class QueenBoard{
   }
 
 
-  public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(5);
+  /*public static void main(String[] args) {
+    QueenBoard k = new QueenBoard(4);
     System.out.println(k.countSolutions());
-  }
+  }*/
 
 }
