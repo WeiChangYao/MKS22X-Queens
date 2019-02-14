@@ -98,6 +98,9 @@ public class QueenBoard{
   }
   
   public int countHelp(int col, int c){
+    if (col >= board.length){
+      return c;
+    }
     for (int i = 0; i < board.length; i++){
         if (this.addQueen(i,col)){
           if (solveR(col+1)){    //loops though combinations and if it's true, add to count
@@ -107,7 +110,7 @@ public class QueenBoard{
           this.removeQueen(i,col);
         } 
       }
-      return c;
+    return c;
   }
 
   
@@ -118,14 +121,13 @@ public class QueenBoard{
     if (board.length == 2 || board.length == 3){ //2 and 3 sized boards are 0
       return 0;
     }
-    //real stuff
     return countHelp(0,0);
   }
 
 
-  /*public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(4);
+ /* public static void main(String[] args) {
+    QueenBoard k = new QueenBoard(5);
     System.out.println(k.countSolutions());
-  }*/
+  } */
 
 }
