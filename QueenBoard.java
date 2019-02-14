@@ -90,6 +90,30 @@ public class QueenBoard{
     }
     return solveR(0);
   } 
+ 
+  public void clear(){
+    for (int i = 0; i < board.length; i++){
+      for (int j = 0; j < board.length; j++){
+        board[i][j] = 0;
+      }
+    }
+  }
+  
+  public int countHelp(int col, int c){
+    if (col >= board.length){
+      c++;
+    }
+    for (int i = 0; i < board.length; i++){
+        if (this.addQueen(i,col)){
+          if (solveR(col+1)){
+            c++;
+            clear();
+         }
+          this.removeQueen(i,col);
+        } 
+      }
+      return c;
+  }
   
   public int countSolutions(){
     if (board[0][0] != 0){
@@ -98,25 +122,15 @@ public class QueenBoard{
     if (board.length == 2 || board.length == 3){
       return 0;
     }
-    int count = 0;
-    for (int i = 0; i < board.length; i++){
-      if (this.solveR(i)){
-        count++;
-      }
-    }
-    return count;
+    //real stuff
+    return countHelp(0,0);
   }
 
 
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(8);
-    System.out.println(k);
-    k.solve();
-    System.out.println(k);
-    QueenBoard b = new QueenBoard(7);
-    System.out.println(b);
-    b.solve();
-    System.out.println(b);
+    QueenBoard k = new QueenBoard(4);
+    System.out.println(k.countSolutions());
+
   }
 
 }
