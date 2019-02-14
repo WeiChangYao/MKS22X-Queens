@@ -82,6 +82,9 @@ public class QueenBoard{
     }
 
   public boolean solve(){
+    if (board[0][0] != 0){
+      throw new IllegalStateException();
+    }
     if (board.length == 2 || board.length == 3){
       return false;
     }
@@ -93,6 +96,10 @@ public class QueenBoard{
     System.out.println(k);
     k.solve();
     System.out.println(k);
+    QueenBoard b = new QueenBoard(7);
+    System.out.println(b);
+    b.solve();
+    System.out.println(b);
   }
 
 }
