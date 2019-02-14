@@ -128,7 +128,7 @@ public class QueenBoard{
 
 
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(4);
+    QueenBoard k = new QueenBoard(6);
     System.out.println(k.countSolutions());
 
   }
