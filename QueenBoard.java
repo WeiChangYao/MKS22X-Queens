@@ -32,13 +32,18 @@ public class QueenBoard{
       if (board[r][i] == -1)
          return false;
     }
+    //checks row of target
+    for (i = 0; i < board.length; i++){
+      if (board[i][c] == -1)
+         return false;
+    }
     //checks top left diag for -1
     for (i = r, j = c; (i >= 0 && j >= 0); i--, j--){
       if (board[i][j] == -1)
          return false;
     }
     //cheskcs bottom left diag for -1
-    for (i = r, j = c; (j >= 0 && i >= 0); i++, j--){
+    for (i = r, j = c; (j >= 0 && i >= board.length); i++, j--){
       if (board[i][j] == -1)
          return false;
        }
@@ -67,24 +72,21 @@ public class QueenBoard{
     }
     for (int i = 0; i < board.length; i++){
         if (this.addQueen(i,col)){
-          this.addQueen(i,col);
           if (solveR(col+1)){
             return true;
           }
-        }
-        else{
           this.removeQueen(i,col);
-        }
+        } 
       }
       return false;
     }
 
- /* public boolean solve(){
-    return solveR(board, 0);
-  } */
+  public boolean solve(){
+    return solveR(0);
+  } 
 
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(4);
+    QueenBoard k = new QueenBoard(2);
     System.out.println(k);
    /* k.addQueen(2,1);
     System.out.println(k);
@@ -93,7 +95,7 @@ public class QueenBoard{
     k.addQueen(3,2);
     System.out.println(k);
     System.out.println(); */
-      k.solveR(0);
+      k.solve();
       System.out.println(k);
   }
 
