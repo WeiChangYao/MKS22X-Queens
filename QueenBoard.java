@@ -82,21 +82,17 @@ public class QueenBoard{
     }
 
   public boolean solve(){
+    if (board.length == 2 || board.length == 3){
+      return false;
+    }
     return solveR(0);
   } 
 
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(2);
+    QueenBoard k = new QueenBoard(8);
     System.out.println(k);
-   /* k.addQueen(2,1);
+    k.solve();
     System.out.println(k);
-    k.addQueen(1,2);
-    k.addQueen(2,2);
-    k.addQueen(3,2);
-    System.out.println(k);
-    System.out.println(); */
-      k.solve();
-      System.out.println(k);
   }
 
 }
