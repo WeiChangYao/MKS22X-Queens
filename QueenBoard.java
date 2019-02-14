@@ -43,7 +43,7 @@ public class QueenBoard{
          return false;
     }
     //cheskcs bottom left diag for -1
-    for (i = r, j = c; (j >= 0 && i >= board.length); i++, j--){
+    for (i = r, j = c; (j >= 0 && i < board.length); i++, j--){
       if (board[i][j] == -1)
          return false;
        }
