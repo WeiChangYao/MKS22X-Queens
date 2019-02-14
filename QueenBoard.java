@@ -74,7 +74,7 @@ public class QueenBoard{
         if (this.addQueen(i,col)){
           if (solveR(col+1)){
             return true;
-          }
+         }
           this.removeQueen(i,col);
         } 
       }
@@ -90,6 +90,23 @@ public class QueenBoard{
     }
     return solveR(0);
   } 
+  
+  public int countSolutions(){
+    if (board[0][0] != 0){
+      throw new IllegalStateException();
+    }
+    if (board.length == 2 || board.length == 3){
+      return 0;
+    }
+    int count = 0;
+    for (int i = 0; i < board.length; i++){
+      if (this.solveR(i)){
+        count++;
+      }
+    }
+    return count;
+  }
+
 
   public static void main(String[] args) {
     QueenBoard k = new QueenBoard(8);
