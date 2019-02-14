@@ -61,19 +61,19 @@ public class QueenBoard{
     return str;
   }
 
-  public static boolean solveR(QueenBoard bord, int col){
-    if (col >= bord.getSize()){
+  public boolean solveR(int col){
+    if (col >= board.length){
       return true;
     }
-    for (int i = 0; i < bord.getSize(); i++){
-        if (bord.addQueen(i,col)){
-          bord.addQueen(i,col);
-          if (solveR(bord, col+1)){
+    for (int i = 0; i < board.length; i++){
+        if (this.addQueen(i,col)){
+          this.addQueen(i,col);
+          if (solveR(col+1)){
             return true;
           }
         }
         else{
-          bord.removeQueen(i,col);
+          this.removeQueen(i,col);
         }
       }
       return false;
@@ -86,17 +86,15 @@ public class QueenBoard{
   public static void main(String[] args) {
     QueenBoard k = new QueenBoard(4);
     System.out.println(k);
-    k.addQueen(2,1);
+   /* k.addQueen(2,1);
     System.out.println(k);
     k.addQueen(1,2);
     k.addQueen(2,2);
     k.addQueen(3,2);
     System.out.println(k);
-    System.out.println();
-    /*if (solveR(k,0) == true){
-      solveR(k,0);
+    System.out.println(); */
+      k.solveR(0);
       System.out.println(k);
-    }*/
   }
 
 }
