@@ -99,20 +99,17 @@ public class QueenBoard{
     }
   }
   
-  public int countHelp(int col, int c){
+  public int countHelp(int col, int count){
     if (col >= board.length){
-      c++;
+      count++;
     }
     for (int i = 0; i < board.length; i++){
         if (this.addQueen(i,col)){
-          if (solveR(col+1)){
-            c++;
-            clear();
-         }
+          countHelp(col+1, count);
           this.removeQueen(i,col);
-        } 
+        }
       }
-      return c;
+      return count;
   }
   
   public int countSolutions(){
@@ -128,9 +125,8 @@ public class QueenBoard{
 
 
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(6);
+    QueenBoard k = new QueenBoard(5);
     System.out.println(k.countSolutions());
-
   }
 
 }
