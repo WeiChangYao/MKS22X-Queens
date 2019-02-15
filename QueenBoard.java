@@ -99,20 +99,21 @@ public class QueenBoard{
     }
   }
   
-  public int countHelp(int col, int c){
+  public boolean countHelp(int col){
     if (col >= board.length){
-      return c;
+      count++;
+      return true;
     }
+    boolean reset = false;
     for (int i = 0; i < board.length; i++){
-        if (this.addQueen(i,col)){
-          if (solveR(col+1)){    //loops though combinations and if it's true, add to count
-            c++;
-            clear();
+        if (addQueen(i,col)){
+          if (countHelp(col+1)){    //loops though combinations and if it's true, add to count
+            reset = true;
          }
-          this.removeQueen(i,col);
+          removeQueen(i,col);
         } 
       }
-    return c;
+    return reset;
   }
 
   
@@ -123,13 +124,14 @@ public class QueenBoard{
     if (board.length == 2 || board.length == 3){ //2 and 3 sized boards are 0
       return 0;
     }
-    return countHelp(0,0);
+    countHelp(0);
+    return count;
   }
 
 
- /* public static void main(String[] args) {
+  public static void main(String[] args) {
     QueenBoard k = new QueenBoard(5);
     System.out.println(k.countSolutions());
-  } */
+  } 
 
 }
