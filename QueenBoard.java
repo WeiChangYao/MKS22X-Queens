@@ -139,13 +139,13 @@ public class QueenBoard{
   }
 
 
-  public static void main(String[] args) {
+  /*public static void main(String[] args) {
     QueenBoard k = new QueenBoard(10);
     System.out.println(k.countSolutions());
         System.out.println(k.countSolutions());
     System.out.println(k.countSolutions());
     System.out.println(k.countSolutions());
 
-  } 
+  } */
 
 }
