@@ -82,8 +82,12 @@ public class QueenBoard{
     }
 
   public boolean solve(){
-    if (board[0][0] != 0){
-      throw new IllegalStateException();
+    for (int i =0; i<board.length; i++){
+      for (int j=0; j<board.length; j++){
+        if (board[i][j] != 0){ //if has a non zero, it returns error.
+          throw new IllegalStateException();
+        }
+      }
     }
     if (board.length == 2 || board.length == 3){ //2 or 3 sized boards are false
       return false;
@@ -101,10 +105,10 @@ public class QueenBoard{
   
   public boolean countHelp(int col){
     if (col >= board.length){
-      count++;
+      count++;   //adds everytime it reaches the end
       return true;
     }
-    boolean reset = false;
+    boolean reset = false;     //false thing to make it reset
     for (int i = 0; i < board.length; i++){
         if (addQueen(i,col)){
           if (countHelp(col+1)){    //loops though combinations and if it's true, add to count
@@ -118,14 +122,18 @@ public class QueenBoard{
 
   
   public int countSolutions(){
-    if (board[0][0] != 0){
-      throw new IllegalStateException();
+    for (int i =0; i<board.length; i++){
+      for (int j=0; j<board.length; j++){
+        if (board[i][j] != 0){ //if has a non zero, it returns error.
+          throw new IllegalStateException();
+        }
+      }
     }
     if (board.length == 2 || board.length == 3){ //2 and 3 sized boards are 0
       return 0;
     }
     countHelp(0);
-    int tempCount = count;
+    int tempCount = count; //temporary count to reset real count
     count = 0;
     return tempCount;
   }
