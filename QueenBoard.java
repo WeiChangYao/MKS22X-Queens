@@ -125,13 +125,19 @@ public class QueenBoard{
       return 0;
     }
     countHelp(0);
-    return count;
+    int tempCount = count;
+    count = 0;
+    return tempCount;
   }
 
 
   public static void main(String[] args) {
-    QueenBoard k = new QueenBoard(5);
+    QueenBoard k = new QueenBoard(10);
     System.out.println(k.countSolutions());
+        System.out.println(k.countSolutions());
+    System.out.println(k.countSolutions());
+    System.out.println(k.countSolutions());
+
   } 
 
 }
